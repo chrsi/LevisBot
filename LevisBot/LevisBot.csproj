@@ -109,7 +109,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Attributes\RequiredEntityAttribute.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Dialogs\IntentProcessors\BaseIntentProcessor.cs" />
     <Compile Include="Dialogs\LuisDialog.cs" />
     <Compile Include="Attributes\MyLuisModelAttribute.cs" />
     <Compile Include="Global.asax.cs">
