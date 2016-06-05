@@ -1,4 +1,5 @@
 ﻿using LevisBot.Attributes;
+using LevisBot.Dialogs.IntentProcessors;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;
@@ -7,44 +8,40 @@ using System.Threading.Tasks;
 
 namespace LevisBot.Dialogs
 {
-	[Serializable]
-	[MyLuisModel]
-	public class LevisDialog : LuisDialog<object>
-	{
-		public const string COURSE_NAME = "CourseName";
+  [Serializable]
+  [MyLuisModel]
+  public class LevisDialog : LuisDialog<object>
+  {
+    public LevisDialog(ILuisService service = null) : base(service)
+    {
+    }
 
-		public LevisDialog(ILuisService service = null) : base(service)
-		{
-		}
+    /// <summary>
+    /// Suspends the context until another LuisMessage arrives. This Action is used by the IntentProcessors.
+    /// </summary>
+    /// <param name="context"></param>
+    public void WaitForMessage(IDialogContext context)
+    {
+      context.Wait(MessageReceived);
+    }
 
-		[LuisIntent("None")]
-		public async Task NothingUnderstood(IDialogContext context, LuisResult result)
-		{
-			await context.PostAsync($"Sorry, I couldn't understand your Request :(");
-			context.Wait(MessageReceived);
-		}
+    #region LuisIntents
 
-		[LuisIntent("GradeQuery")]
-		public async Task GradeQuery(IDialogContext context, LuisResult result)
-		{
-			string course;
+    [LuisIntent("None")]
+    public async Task NothingUnderstood(IDialogContext context, LuisResult result)
+    {
+      await context.PostAsync($"Sorry, I couldn't understand your Request :(");
+      context.Wait(MessageReceived);
+    }
 
-			EntityRecommendation courseEntity;
-			if (result.TryFindEntity(COURSE_NAME, out courseEntity))
-			{
-				course = courseEntity.Entity;
-			}
-			else
-			{
-				await context.PostAsync($"Sorry, I didn't get the Course.");
-				context.Wait(MessageReceived);
-				return;
-			}
+    [LuisIntent("GradeQuery")]
+    public async Task GradeQuery(IDialogContext context, LuisResult result)
+    {
+      var gradeQuery = new GradeQueryProcessor(result, WaitForMessage);
 
-			//retrieve course grade
+      await gradeQuery.Run(context);
+    }
 
-			await context.PostAsync($"Your grade in {course} is: ...");
-			context.Wait(MessageReceived);
-		}
-	}
+    #endregion
+  }
 }
