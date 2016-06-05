@@ -42,6 +42,12 @@ namespace LevisBot.Dialogs
       await gradeQuery.Run(context);
     }
 
+    public async Task GradeQuery(IDialogContext context, LuisResult result)
+    {
+      var gradeQuery = new GradeQueryProcessor(result, WaitForMessage);
+
+      await gradeQuery.Run(context);
+    }
     #endregion
   }
 }
