@@ -10,7 +10,8 @@ It is implemented using the [BotBuilder SDK](https://github.com/Microsoft/BotBui
 -	[Bot Framework Emulator](http://docs.botframework.com/connector/tools/bot-framework-emulator/)  **(for testing only)**
 
 # Setup
--	Add a `secrets.config` file containing the following information:
+* Add a `secrets.config` file containing the following information:
+
 	```
 	<?xml version="1.0"?>
 	<appSettings>
@@ -20,13 +21,16 @@ It is implemented using the [BotBuilder SDK](https://github.com/Microsoft/BotBui
 		<add key="LuisSubscriptionKey" value="<luis-subscription-key>"/>
 	</appSettings>
 	```
--	Train your LUIS application:
-	`CourseGradeQuery`: Query about the overall grade of a course (described by the entity `Course`).
-	`GradeQuery`:  Query about the grade of a specific gradeable type (e.g. assignment, test, exam; descriped by the entity `Type` and the entity `Ordinal` for numbering) in the course (described by the entity `Course`).
--	Deploy
+	
+* Train your LUIS application:
+
+ `CourseGradeQuery`: Query about the overall grade of a course (described by the entity `Course`).
+
+ `GradeQuery`:  Query about the grade of a specific gradeable type (e.g. assignment, test, exam; descriped by the entity `Type` and the entity `Ordinal` for numbering) in the course (described by the entity `Course`).
+* Deploy
 
 # Example
-![Chat Example](http://i.imgur.com/rEW6yDu.gifv)
+![Chat Example](http://i.imgur.com/rEW6yDu.gif)
 
 # Motivation
 This is the result of a university assignment regarding `Service Engineering`, during my master studies at the [University of Applied Sciences Hagenberg](https://www.fh-ooe.at/en/hagenberg-campus/).
