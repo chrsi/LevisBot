@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 namespace LevisBot.Dialogs.IntentProcessors
 {
   [Serializable]
-  public class GradeQueryProcessor : BaseIntentProcessor
+  public class CourseGradeQueryProcessor : BaseIntentProcessor
   {
     [RequiredEntity("Course",
                     PromptMessage = "For what course do you want to know the grade ?")]
     public string Course { get; set; }
 
-    public GradeQueryProcessor(LuisResult luisResult, Action<IDialogContext> defaultSuspendAction) : base(luisResult, defaultSuspendAction)
+    public CourseGradeQueryProcessor(LuisResult luisResult, Action<IDialogContext> defaultSuspendAction) : base(luisResult, defaultSuspendAction)
     {
     }
 
