@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace LevisBot.Dialogs.IntentProcessors
 {
+  [Serializable]
   internal class GradeQueryProcessor : BaseIntentProcessor
   {
     public GradeQueryProcessor(LuisResult luisResult, Action<IDialogContext> defaultSuspendAction) : base(luisResult, defaultSuspendAction)
