@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LevisBot.DAL.DAO
@@ -13,5 +14,7 @@ namespace LevisBot.DAL.DAO
 
     [Required]
     public string LastName { get; set; }
+
+    public virtual Collection<Grade> Grades { get; set; }
   }
 }
