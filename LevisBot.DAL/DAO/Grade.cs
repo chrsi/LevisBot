@@ -17,7 +17,10 @@ namespace LevisBot.DAL.DAO
     [Required]
     public int Result { get; set; }
 
-    [Required]
+    public int MaxResult { get; set; }
+
+    public int Number { get; set; }
+
     public GradeableType Type { get; set; }
   }
 }
