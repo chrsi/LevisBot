@@ -42,6 +42,7 @@ namespace LevisBot.Dialogs
       await gradeQuery.Run(context);
     }
 
+    [LuisIntent("GradeQuery")]
     public async Task GradeQuery(IDialogContext context, LuisResult result)
     {
       var gradeQuery = new GradeQueryProcessor(result, WaitForMessage);
