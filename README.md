@@ -1,3 +1,5 @@
+# Warning
+This Bot was written using BotBuilder v1.2!
 # LevisBot
 A Bot that provides university information about it's students. The information currently includes:
 -	Course Grades
